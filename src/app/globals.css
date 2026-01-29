@@ -64,6 +64,8 @@
 
     --ring: 215 20% 65%;
 
+    --primary-rgb: 59, 130, 246;
+
     --radius: 0.75rem;
 
     /* Custom Tokens */
@@ -102,6 +104,8 @@
     --destructive-foreground: 210 40% 98%;
 
     --ring: 215 20% 65%;
+
+    --primary-rgb: 59, 130, 246;
 
     /* Custom Tokens */
     --surface: 217 33% 17%;

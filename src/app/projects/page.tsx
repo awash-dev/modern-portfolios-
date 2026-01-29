@@ -64,18 +64,19 @@ export default function ProjectsPage() {
                             key={project.id}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            whileHover={{ y: -10, scale: 1.02 }}
-                            transition={{
-                                initial: { delay: idx * 0.05 },
-                                whileHover: { type: "spring", stiffness: 400, damping: 25 }
+                            whileHover={{
+                                y: -10,
+                                scale: 1.02,
+                                transition: { type: "spring", stiffness: 400, damping: 25 }
                             }}
+                            transition={{ delay: idx * 0.05 }}
                             className="h-full"
                         >
                             <Card className="h-full flex flex-col group hover:border-primary/40 transition-all rounded-4xl bg-surface/30 backdrop-blur-md border border-white/5 shadow-2xl relative overflow-hidden">
                                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 blur-3xl rounded-full group-hover:bg-primary/20 transition-all duration-700" />
                                 <CardHeader className="p-8 pb-0">
                                     <div className="flex justify-between items-start mb-4">
-                                        <CardTitle className="text-xl group-hover:text-primary transition-colors tracking-tight uppercase italic font-black break-words leading-none">
+                                        <CardTitle className="text-xl group-hover:text-primary transition-colors tracking-tight uppercase italic font-black wrap-break-word leading-none">
                                             {project.name.replace(/-/g, ' ')}
                                         </CardTitle>
                                         {project.stargazers_count > 0 && (
@@ -97,7 +98,7 @@ export default function ProjectsPage() {
                                                 </span>
                                             ))
                                         ) : (
-                                            <span className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 bg-background/50 border border-border rounded-xl text-text-tertiary uppercase">
+                                            <span className="text-[9px] font-black tracking-widest px-3 py-1.5 bg-background/50 border border-border rounded-xl text-text-tertiary uppercase">
                                                 {project.language || "System"}
                                             </span>
                                         )}

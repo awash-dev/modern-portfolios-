@@ -28,7 +28,8 @@ export const metadata: Metadata = {
     "GoLang Rust Python Afar",
     "Systems Engineering Afar",
     "Web Development Afar",
-    "Scalable Backend Systems"
+    "Scalable Backend Systems",
+    ""
   ],
   icons: {
     icon: "/logo.png",

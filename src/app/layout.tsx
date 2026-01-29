@@ -16,8 +16,39 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mohammed Hussen | Backend Systems Architect",
-  description: "Portfolio of Mohammed Hussen, specializing in high-performance backend systems with Go, Rust, and Python.",
+  title: "Mohammed Hussen | Backend Architect & Software Engineer",
+  description: "Portfolio of Mohammed Hussen, a high-performance backend architect specialized in systems engineering, serving Afar regions and beyond with scalable software solutions.",
+  keywords: [
+    "Mohammed Hussen",
+    "Mohammed Hussen Afar",
+    "Mohammed Hussen Software Developer",
+    "Afar Region Softwares",
+    "Afar Ethiopia Software Engineer",
+    "Backend Architect Ethiopia",
+    "GoLang Rust Python Afar",
+    "Systems Engineering Afar",
+    "Web Development Afar",
+    "Scalable Backend Systems"
+  ],
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
+  openGraph: {
+    title: "Mohammed Hussen | Backend Architect",
+    description: "Leading software development and systems architecture from the Afar region to the world.",
+    url: "https://github.com/awash-dev",
+    siteName: "Mohammed Hussen Portfolio",
+    images: [
+      {
+        url: "/logo.png",
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

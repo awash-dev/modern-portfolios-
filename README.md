@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mohammed Hussen | Backend Architect & Systems Engineer
 
-## Getting Started
+![Logo](./public/logo.png)
 
-First, run the development server:
+## 🚀 Engineering Performance, Architecting the Future
+
+Digital pioneer from the **Afar Region, Ethiopia**, specializing in high-concurrency systems, distributed architectures, and invisible technology. I build robust foundations that handle millions of requests while maintaining human-centric empathy in every line of code.
+
+---
+
+### 🛠️ Technical Arsenal
+
+- **Languages**: Go (Golang), Rust, Python, TypeScript
+- **Frameworks**: Next.js, NestJS, FastAPI, Bun, Expo (Mobile)
+- **Infrastructure**: PostgreSQL, Redis, Docker, Kubernetes, gRPC
+- **Philosophy**: Performance as a service. User-centric distributed systems. Empathy in code.
+
+---
+
+### 🌐 Digital Footprint in Afar & Beyond
+
+Proudly representing the **Afar region** in the global software landscape. I am dedicated to bringing world-class software engineering standards to local challenges and global markets.
+
+- **Founder/Lead Engineer**: Focused on scalable software solutions.
+- **Region Focus**: Afar, Ethiopia and International Remote.
+- **Core Mission**: Solving real human challenges with bulletproof backend systems.
+
+---
+
+### 📦 Key Projects (Live from GitHub)
+
+This portfolio dynamically pulls the latest shipments from my GitHub ecosystem. 
+
+- **Systems Architecture**: Deep backend systems with extreme performance.
+- **Mobile Ecosystems**: Modern, fluid mobile experiences using Expo.
+- **API Design**: Secure, robust, and documented API standards.
+
+---
+
+### 🚀 Getting Started
+
+To run this portfolio locally:
 
 ```bash
+git clone https://github.com/awash-dev/modern-portfolios-.git
+cd modern-portfolios-
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 📬 Connect with Me
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Email**: hello@awashdev.com
+- **GitHub**: [@awash-dev](https://github.com/awash-dev)
+- **Location**: Ethiopia / Afar / Remote
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*“Code isn’t just logic—it’s digital kindness.”*

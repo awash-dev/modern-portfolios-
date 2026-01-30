@@ -7,9 +7,7 @@ export async function POST(req: Request) {
         const { name, email, subject, message } = await req.json();
 
         const transporter = nodemailer.createTransport({
-            host: process.env.SMTP_HOST,
-            port: Number(process.env.SMTP_PORT),
-            secure: true, // true for 465, false for other ports
+            service: 'gmail',
             auth: {
                 user: process.env.SMTP_USER,
                 pass: process.env.SMTP_PASS,
@@ -35,15 +33,29 @@ export async function POST(req: Request) {
             html: UserConfirmationTemplate(name),
         };
 
-        // Execute both mail sends
-        await Promise.all([
-            transporter.sendMail(adminMailOptions),
-            transporter.sendMail(userMailOptions),
-        ]);
-
-        return NextResponse.json({ message: 'Emails sent successfully' }, { status: 200 });
+        // Execute both mail sends with detailed logging
+        try {
+            await Promise.all([
+                transporter.sendMail(adminMailOptions),
+                transporter.sendMail(userMailOptions),
+            ]);
+            console.log('Both emails sent successfully');
+            return NextResponse.json({ message: 'Emails sent successfully' }, { status: 200 });
+        } catch (mailError: any) {
+            console.error('Nodemailer Error:', {
+                message: mailError.message,
+                code: mailError.code,
+                command: mailError.command,
+                response: mailError.response
+            });
+            return NextResponse.json({
+                error: 'Failed to send email',
+                details: mailError.message
+            }, { status: 500 });
+        }
     } catch (error: unknown) {
-        console.error('SMTP Error:', error);
-        return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        console.error('Request Error:', errorMessage);
+        return NextResponse.json({ error: 'Failed to process request', details: errorMessage }, { status: 500 });
     }
 }

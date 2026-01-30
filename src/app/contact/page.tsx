@@ -90,8 +90,9 @@ export default function ContactPage() {
 
                 {/* Contact Form with Pro Tilt */}
                 <div className="px-4 md:px-0">
-                    <TiltCard className="p-6 rounded-4xl bg-surface border border-border shadow-2xl relative overflow-hidden group">
+                    <TiltCard className="p-6 rounded-4xl bg-surface border border-border shadow-2xl relative !overflow-visible group">
                         <form className="space-y-6" onSubmit={handleSubmit}>
+                            {/* ... inputs ... */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black uppercase tracking-widest text-text-tertiary ml-2">Full Name</label>
@@ -143,24 +144,34 @@ export default function ContactPage() {
                                 ></textarea>
                             </div>
 
-                            <div className="space-y-6">
-                                <Button
-                                    type="submit"
-                                    size="lg"
-                                    className="w-full shadow-2xl shadow-primary/30 group/btn"
-                                    isLoading={status === "loading"}
-                                    rightIcon={<Send size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />}
-                                >
-                                    Send Message
-                                </Button>
+                            <div className="space-y-6 min-h-[64px] flex flex-col justify-end">
+                                <AnimatePresence mode="popLayout">
+                                    {status !== "success" && (
+                                        <motion.div
+                                            key="button"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, scale: 0.95 }}
+                                        >
+                                            <Button
+                                                type="submit"
+                                                size="lg"
+                                                className="w-full shadow-2xl shadow-primary/30 group/btn"
+                                                isLoading={status === "loading"}
+                                                rightIcon={<Send size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />}
+                                            >
+                                                Send Message
+                                            </Button>
+                                        </motion.div>
+                                    )}
 
-                                <AnimatePresence>
                                     {status === "success" && (
                                         <motion.div
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: "auto" }}
-                                            exit={{ opacity: 0, height: 0 }}
-                                            className="flex items-center gap-3 p-4 rounded-2xl bg-green-500/10 border border-green-500/20 text-green-500 text-xs font-bold uppercase tracking-widest"
+                                            key="success"
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.9 }}
+                                            className="w-full h-16 flex items-center justify-center gap-3 rounded-2xl bg-green-500/10 border border-green-500/20 text-green-500 text-xs font-bold uppercase tracking-widest"
                                         >
                                             <CheckCircle2 size={18} />
                                             Message sent! I&apos;ll get back to you soon.
@@ -169,13 +180,14 @@ export default function ContactPage() {
 
                                     {status === "error" && (
                                         <motion.div
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: "auto" }}
-                                            exit={{ opacity: 0, height: 0 }}
-                                            className="flex items-center gap-3 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold uppercase tracking-widest"
+                                            key="error"
+                                            initial={{ opacity: 0, y: -10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0 }}
+                                            className="w-full flex items-center justify-center gap-3 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold uppercase tracking-widest"
                                         >
                                             <AlertCircle size={18} />
-                                            Failed to send. Please check your connection.
+                                            Failed to send. Please retry.
                                         </motion.div>
                                     )}
                                 </AnimatePresence>

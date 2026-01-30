@@ -44,10 +44,8 @@ export async function POST(req: Request) {
 
         // Execute both mail sends with detailed logging
         try {
-            await Promise.all([
-                transporter.sendMail(adminMailOptions),
-                transporter.sendMail(userMailOptions),
-            ]);
+            await transporter.sendMail(adminMailOptions);
+            await transporter.sendMail(userMailOptions);
             console.log('Both emails sent successfully');
             return NextResponse.json({ message: 'Emails sent successfully' }, { status: 200 });
         } catch (mailError: unknown) {

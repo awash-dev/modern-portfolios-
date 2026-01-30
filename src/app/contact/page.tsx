@@ -88,11 +88,18 @@ export default function ContactPage() {
                     </div>
                 </div>
 
-                {/* Contact Form with Pro Tilt */}
+                {/* Contact Form - Stable Card (No Tilt) for better UX */}
                 <div className="px-4 md:px-0">
-                    <TiltCard className="p-6 rounded-4xl bg-surface border border-border shadow-2xl relative !overflow-visible group">
-                        <form className="space-y-6" onSubmit={handleSubmit}>
-                            {/* ... inputs ... */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="p-8 rounded-4xl bg-surface/30 backdrop-blur-md border border-white/5 shadow-2xl relative overflow-hidden group hover:border-primary/20 transition-colors duration-500"
+                    >
+                        {/* Dynamic Background Glow */}
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[100px] rounded-full group-hover:bg-primary/10 transition-colors duration-700 pointer-events-none -z-10" />
+
+                        <form className="space-y-8 relative z-10" onSubmit={handleSubmit}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black uppercase tracking-widest text-text-tertiary ml-2">Full Name</label>
@@ -103,7 +110,7 @@ export default function ContactPage() {
                                         value={formData.name}
                                         onChange={handleChange}
                                         placeholder="John Doe"
-                                        className="w-full h-14 rounded-2xl bg-background border border-border px-6 font-bold focus:border-primary transition-all outline-none text-sm"
+                                        className="w-full h-14 rounded-2xl bg-background/50 border border-white/10 px-6 font-bold focus:border-primary focus:bg-background transition-all outline-none text-sm placeholder:text-white/20"
                                     />
                                 </div>
                                 <div className="space-y-3">
@@ -115,7 +122,7 @@ export default function ContactPage() {
                                         value={formData.email}
                                         onChange={handleChange}
                                         placeholder="john@example.com"
-                                        className="w-full h-14 rounded-2xl bg-background border border-border px-6 font-bold focus:border-primary transition-all outline-none text-sm"
+                                        className="w-full h-14 rounded-2xl bg-background/50 border border-white/10 px-6 font-bold focus:border-primary focus:bg-background transition-all outline-none text-sm placeholder:text-white/20"
                                     />
                                 </div>
                             </div>
@@ -128,7 +135,7 @@ export default function ContactPage() {
                                     value={formData.subject}
                                     onChange={handleChange}
                                     placeholder="Project Inquiry"
-                                    className="w-full h-14 rounded-2xl bg-background border border-border px-6 font-bold focus:border-primary transition-all outline-none text-sm"
+                                    className="w-full h-14 rounded-2xl bg-background/50 border border-white/10 px-6 font-bold focus:border-primary focus:bg-background transition-all outline-none text-sm placeholder:text-white/20"
                                 />
                             </div>
                             <div className="space-y-3">
@@ -140,7 +147,7 @@ export default function ContactPage() {
                                     value={formData.message}
                                     onChange={handleChange}
                                     placeholder="Tell me about your vision..."
-                                    className="w-full py-4 rounded-3xl bg-background border border-border px-6 font-bold focus:border-primary transition-all outline-none resize-none text-sm"
+                                    className="w-full py-4 rounded-3xl bg-background/50 border border-white/10 px-6 font-bold focus:border-primary focus:bg-background transition-all outline-none resize-none text-sm placeholder:text-white/20"
                                 ></textarea>
                             </div>
 
@@ -193,7 +200,7 @@ export default function ContactPage() {
                                 </AnimatePresence>
                             </div>
                         </form>
-                    </TiltCard>
+                    </motion.div>
                 </div>
             </div>
         </div>

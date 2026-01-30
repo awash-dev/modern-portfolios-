@@ -41,16 +41,17 @@ export async function POST(req: Request) {
             ]);
             console.log('Both emails sent successfully');
             return NextResponse.json({ message: 'Emails sent successfully' }, { status: 200 });
-        } catch (mailError: any) {
+        } catch (mailError: unknown) {
+            const error = mailError as { message?: string; code?: string; command?: string; response?: string };
             console.error('Nodemailer Error:', {
-                message: mailError.message,
-                code: mailError.code,
-                command: mailError.command,
-                response: mailError.response
+                message: error.message,
+                code: error.code,
+                command: error.command,
+                response: error.response
             });
             return NextResponse.json({
                 error: 'Failed to send email',
-                details: mailError.message
+                details: error.message || 'Unknown SMTP error'
             }, { status: 500 });
         }
     } catch (error: unknown) {

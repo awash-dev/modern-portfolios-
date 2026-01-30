@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Github, Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Mail, Github, Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { TiltCard } from "@/components/ui/TiltCard";
 
@@ -143,60 +143,39 @@ export default function ContactPage() {
                                 ></textarea>
                             </div>
 
-                            <div className="relative">
-                                <AnimatePresence mode="wait">
-                                    {status === "idle" && (
-                                        <motion.div
-                                            key="idle"
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            exit={{ opacity: 0 }}
-                                        >
-                                            <Button
-                                                type="submit"
-                                                className="w-full h-16 rounded-3xl gap-4 font-black uppercase tracking-[0.3em] text-[10px] shadow-2xl shadow-primary/30 group/btn"
-                                            >
-                                                Send Message <Send size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                                            </Button>
-                                        </motion.div>
-                                    )}
+                            <div className="space-y-6">
+                                <Button
+                                    type="submit"
+                                    size="lg"
+                                    className="w-full shadow-2xl shadow-primary/30 group/btn"
+                                    isLoading={status === "loading"}
+                                    rightIcon={<Send size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />}
+                                >
+                                    Send Message
+                                </Button>
 
-                                    {status === "loading" && (
-                                        <motion.div
-                                            key="loading"
-                                            initial={{ opacity: 0, scale: 0.95 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            exit={{ opacity: 0, scale: 0.95 }}
-                                            className="w-full h-16 flex items-center justify-center bg-primary/10 rounded-3xl text-primary font-bold gap-3"
-                                        >
-                                            <Loader2 className="animate-spin" size={20} />
-                                            SENDING MESSAGE...
-                                        </motion.div>
-                                    )}
-
+                                <AnimatePresence>
                                     {status === "success" && (
                                         <motion.div
-                                            key="success"
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -10 }}
-                                            className="w-full h-16 flex items-center justify-center bg-green-500/10 border border-green-500/20 rounded-3xl text-green-500 font-bold gap-3"
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: "auto" }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            className="flex items-center gap-3 p-4 rounded-2xl bg-green-500/10 border border-green-500/20 text-green-500 text-xs font-bold uppercase tracking-widest"
                                         >
-                                            <CheckCircle2 size={20} />
-                                            MESSAGE SENT SUCCESSFULLY!
+                                            <CheckCircle2 size={18} />
+                                            Message sent! I&apos;ll get back to you soon.
                                         </motion.div>
                                     )}
 
                                     {status === "error" && (
                                         <motion.div
-                                            key="error"
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -10 }}
-                                            className="w-full h-16 flex items-center justify-center bg-red-500/10 border border-red-500/20 rounded-3xl text-red-500 font-bold gap-3"
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: "auto" }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            className="flex items-center gap-3 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold uppercase tracking-widest"
                                         >
-                                            <AlertCircle size={20} />
-                                            FAILED TO SEND. PLEASE TRY AGAIN.
+                                            <AlertCircle size={18} />
+                                            Failed to send. Please check your connection.
                                         </motion.div>
                                     )}
                                 </AnimatePresence>

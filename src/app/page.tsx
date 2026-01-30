@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Database, Server, Cpu, Terminal, Sparkles, Zap, Shield, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card';
 import { TiltCard } from '@/components/ui/TiltCard';
 
 export default function HomePage() {
@@ -174,23 +173,30 @@ export default function HomePage() {
             {expertise.map((item) => (
               <TiltCard
                 key={item.title}
-                className="h-full"
+                className="h-full bg-surface/30 border border-white/5 rounded-4xl shadow-2xl"
+                spotlightColor="rgba(var(--primary-rgb), 0.15)"
               >
                 <motion.div
-                  whileHover={{ y: -8, scale: 1.02 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  whileHover={{ y: -10 }}
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                  className="h-full"
+                  className="p-8 flex flex-col h-full relative z-10 group"
                 >
-                  <Card className="h-full group hover:border-primary/50 transition-all duration-500 bg-surface/40 backdrop-blur-xl border border-white/5 rounded-4xl relative overflow-hidden">
-                    <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 blur-3xl rounded-full group-hover:bg-primary/20 transition-all" />
-                    <CardHeader className="p-10">
-                      <div className="w-14 h-14 rounded-2xl bg-background border border-white/10 flex items-center justify-center mb-8 group-hover:scale-125 group-hover:rotate-6 group-hover:bg-primary/10 transition-all duration-500 shadow-xl">
-                        {item.icon}
-                      </div>
-                      <CardTitle className="mb-4 text-2xl group-hover:text-primary transition-colors italic uppercase tracking-tighter font-black">{item.title}</CardTitle>
-                      <CardDescription className="leading-relaxed group-hover:text-text-primary transition-colors font-medium text-[11px] uppercase tracking-wider">{item.desc}</CardDescription>
-                    </CardHeader>
-                  </Card>
+                  <div className="w-16 h-16 rounded-2xl bg-background/40 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xl border border-white/5">
+                    <div className="text-primary drop-shadow-[0_0_10px_rgba(var(--primary-rgb),0.3)]">
+                      {item.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-black italic uppercase tracking-tighter mb-4 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-text-secondary group-hover:text-text-primary transition-colors font-medium text-[11px] uppercase tracking-wider leading-relaxed">
+                    {item.desc}
+                  </p>
+
+                  {/* Subtle Background Glow */}
+                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 blur-3xl rounded-full group-hover:bg-primary/10 transition-all -z-10" />
                 </motion.div>
               </TiltCard>
             ))}

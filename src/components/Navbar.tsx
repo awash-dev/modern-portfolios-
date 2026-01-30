@@ -28,8 +28,9 @@ const Navbar = () => {
     }, []);
 
     useEffect(() => {
-        setIsOpen(false);
-    }, [pathname]);
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        if (isOpen) setIsOpen(false);
+    }, [pathname, isOpen]);
 
     return (
         <motion.nav

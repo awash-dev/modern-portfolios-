@@ -171,7 +171,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {expertise.map((item, idx) => (
+            {expertise.map((item) => (
               <TiltCard
                 key={item.title}
                 className="h-full"

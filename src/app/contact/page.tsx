@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/Button";
 import { TiltCard } from "@/components/ui/TiltCard";
 
 const socialLinks = [
-    { icon: <Mail size={24} />, label: "Email", value: "hello@awashdev.com", href: "mailto:hello@awashdev.com" },
-    { icon: <Github size={24} />, label: "Github", value: "github.com/awashdev", href: "#" },
+    { icon: <Mail size={24} />, label: "Email", value: "mtcoder42@gmail.com", href: "mailto:hello@awashdev.com" },
+    { icon: <Github size={24} />, label: "Github", value: "github.com/awash-dev", href: "#" },
 ];
 
 export default function ContactPage() {

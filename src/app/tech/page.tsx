@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Terminal, Database, Server, Cpu, Layers, Shield, Zap, Box } from 'lucide-react';
+import { Terminal, Database, Server, Layers, Zap, Box } from 'lucide-react';
 import { TiltCard } from '@/components/ui/TiltCard';
 
 const categories = [
@@ -46,7 +46,7 @@ export default function TechPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {categories.map((cat, idx) => (
+                {categories.map((cat) => (
                     <TiltCard
                         key={cat.title}
                         className="h-full bg-surface/30 border border-white/5 rounded-4xl shadow-2xl"

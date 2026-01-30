@@ -6,6 +6,15 @@ export async function POST(req: Request) {
     try {
         const { name, email, subject, message } = await req.json();
 
+        // Validate Environment Variables
+        if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+            console.error('Server Configuration Error: Missing SMTP_USER or SMTP_PASS');
+            return NextResponse.json({
+                error: 'Server configuration error',
+                details: 'Email service not configured properly'
+            }, { status: 500 });
+        }
+
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {

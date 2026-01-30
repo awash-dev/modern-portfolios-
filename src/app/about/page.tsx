@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, MapPin, Briefcase, GraduationCap, Heart, Zap, Award } from "lucide-react";
+import { Download, MapPin, Briefcase, GraduationCap, Zap, Award, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { TiltCard } from "@/components/ui/TiltCard";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutPage() {
     const highlights = [
@@ -16,8 +17,15 @@ export default function AboutPage() {
     const certs = [
         { title: "Flask Dev", issuer: "Mind Luster", img: "/certificertifications/full-flask-mind-luster.png" },
         { title: "Blockchain", issuer: "Mind Luster", img: "/certificertifications/mindluster-blockchain.webp" },
+        { title: "Mobile Dev", issuer: "Personal", img: "/certificertifications/mobile-dev.png" },
         { title: "Python DS", issuer: "SoloLearn", img: "/certificertifications/python-data-scientists-solo-learn.png" },
         { title: "Structures", issuer: "SoloLearn", img: "/certificertifications/python-data-stractures-solo-learn.png" },
+    ];
+
+    const favPages = [
+        { title: "Projects", desc: "View my best technical work.", path: "/projects", icon: <Briefcase size={20} /> },
+        { title: "Tech Stack", desc: "The tools I use daily.", path: "/tech", icon: <Zap size={20} /> },
+        { title: "Experience", desc: "My professional journey.", path: "/about", icon: <GraduationCap size={20} /> },
     ];
 
     const containerVariants = {
@@ -125,11 +133,11 @@ export default function AboutPage() {
                             </div>
                             <div>
                                 <p className="font-black uppercase italic text-xl">Verified Credits</p>
-                                <p className="text-[9px] font-black uppercase tracking-widest text-text-tertiary">4 Professional Certifications</p>
+                                <p className="text-[9px] font-black uppercase tracking-widest text-text-tertiary">5 Professional Certifications</p>
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+                        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 w-full">
                             {certs.map((c, i) => (
                                 <div key={i} className="group relative aspect-4/3 rounded-2xl overflow-hidden bg-background border border-white/5 shadow-lg flex items-center justify-center p-3">
                                     <Image src={c.img} alt={c.title} fill className="object-contain group-hover:scale-110 transition-transform duration-500 opacity-90 group-hover:opacity-100" />
@@ -142,6 +150,54 @@ export default function AboutPage() {
                     </div>
                 </motion.div>
 
+                {/* Favourite Pages Section */}
+                <motion.div
+                    variants={itemVariants}
+                    className="md:col-span-12 mt-12 space-y-8"
+                >
+                    <div className="flex flex-col items-center text-center space-y-4">
+                        <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic">Favourite <span className="text-primary">Pages</span></h2>
+                        <p className="text-text-secondary text-[10px] font-black uppercase tracking-[0.3em]">Explore more of my work</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {favPages.map((page, i) => (
+                            <Link key={i} href={page.path}>
+                                <motion.div
+                                    whileHover={{ y: -8 }}
+                                    className="p-8 rounded-4xl bg-surface/30 border border-white/5 hover:border-primary/50 transition-all group flex flex-col items-center text-center space-y-4"
+                                >
+                                    <div className="p-4 rounded-2xl bg-background text-primary group-hover:scale-110 transition-transform">
+                                        {page.icon}
+                                    </div>
+                                    <h3 className="font-black uppercase italic tracking-tighter text-xl">{page.title}</h3>
+                                    <p className="text-text-tertiary text-[10px] uppercase font-bold tracking-widest">{page.desc}</p>
+                                </motion.div>
+                            </Link>
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* Final Contact Call to Action */}
+                <motion.div
+                    variants={itemVariants}
+                    className="md:col-span-12 mt-12 mb-10"
+                >
+                    <div className="relative rounded-4xl bg-primary p-1 md:p-12 overflow-hidden group">
+                        <div className="absolute inset-0 bg-linear-to-r from-white/10 to-transparent opacity-50" />
+                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 p-8 md:p-0">
+                            <div className="text-center md:text-left space-y-4">
+                                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter italic leading-none text-white">Let&apos;s Build <br /> Something Great</h2>
+                                <p className="text-white/70 text-[10px] font-black uppercase tracking-[0.3em]">Available for projects and collaborations</p>
+                            </div>
+                            <Link href="/contact">
+                                <Button className="h-20 px-12 rounded-3xl bg-white text-primary hover:bg-white/90 font-black uppercase tracking-widest text-[12px] group/btn">
+                                    Contact Me Now <ArrowRight size={20} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </motion.div>
             </div>
         </motion.div>
     );

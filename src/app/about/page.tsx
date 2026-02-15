@@ -6,7 +6,6 @@ import {
   MapPin,
   Briefcase,
   GraduationCap,
-  Zap,
   Award,
   ArrowRight,
 } from "lucide-react";
@@ -23,17 +22,31 @@ export default function AboutPage() {
   ];
 
   const certs = [
-    { title: "Flask Dev", issuer: "Mind Luster", img: "/certificertifications/full-flask-mind-luster.png" },
-    { title: "Blockchain", issuer: "Mind Luster", img: "/certificertifications/mindluster-blockchain.webp" },
-    { title: "Mobile Dev", issuer: "Personal", img: "/certificertifications/mobile-dev.png" },
-    { title: "Python DS", issuer: "SoloLearn", img: "/certificertifications/python-data-scientists-solo-learn.png" },
-    { title: "Structures", issuer: "SoloLearn", img: "/certificertifications/python-data-stractures-solo-learn.png" },
-  ];
-
-  const favPages = [
-    { title: "Projects", desc: "View my best technical work.", path: "/projects", icon: <Briefcase size={22} /> },
-    { title: "Tech Stack", desc: "The tools I use daily.", path: "/tech", icon: <Zap size={22} /> },
-    { title: "Experience", desc: "My professional journey.", path: "/about", icon: <GraduationCap size={22} /> },
+    {
+      title: "Flask Dev",
+      issuer: "Mind Luster",
+      img: "/certificertifications/full-flask-mind-luster.png",
+    },
+    {
+      title: "Blockchain",
+      issuer: "Mind Luster",
+      img: "/certificertifications/mindluster-blockchain.webp",
+    },
+    {
+      title: "Mobile Dev",
+      issuer: "Personal",
+      img: "/certificertifications/mobile-dev.png",
+    },
+    {
+      title: "Python DS",
+      issuer: "SoloLearn",
+      img: "/certificertifications/python-data-scientists-solo-learn.png",
+    },
+    {
+      title: "Structures",
+      issuer: "SoloLearn",
+      img: "/certificertifications/python-data-stractures-solo-learn.png",
+    },
   ];
 
   return (
@@ -179,40 +192,8 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* -------- Favourite Pages -------- */}
-        <div className="md:col-span-12 space-y-12">
-          <div className="text-center space-y-3">
-            <h2 className="text-3xl md:text-4xl font-semibold">
-              Favourite Pages
-            </h2>
-            <p className="text-text-secondary">
-              Explore more of my work
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {favPages.map((page, i) => (
-              <Link key={i} href={page.path}>
-                <div className="p-10 rounded-3xl bg-surface border border-border hover:border-primary transition shadow-lg hover:-translate-y-1 duration-300 text-center space-y-5">
-                  <div className="mx-auto w-fit p-4 rounded-xl bg-background text-primary">
-                    {page.icon}
-                  </div>
-
-                  <h3 className="text-lg font-semibold">
-                    {page.title}
-                  </h3>
-
-                  <p className="text-sm text-text-secondary">
-                    {page.desc}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-
         {/* -------- CTA -------- */}
-        <div className="md:col-span-12 mt-16">
+        <div className="md:col-span-12 mt-8">
           <div className="rounded-3xl bg-primary p-12 text-white flex flex-col md:flex-row items-center justify-between gap-10">
 
             <div>
